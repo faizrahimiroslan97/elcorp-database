@@ -1,4 +1,4 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
+import mainStyles from "~/styles/global.css";
 
 import {
   Links,
@@ -9,9 +9,19 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-export const links = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+export function links() {
+  return [{ rel: "stylesheet", href: mainStyles }];
+}
+
+export const meta = () => {
+  return [
+    { title: "ElCorpTech Database" },
+    {
+      name: "description",
+      content: "A database system used by ElCorp Technology",
+    },
+  ];
+};
 
 export default function App() {
   return (
