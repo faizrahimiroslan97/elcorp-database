@@ -1,4 +1,5 @@
-// app/utils/user.server.ts
+// app/utils/user.server.js
+
 import bcrypt from "bcryptjs";
 import { prisma } from "./prisma.server";
 
