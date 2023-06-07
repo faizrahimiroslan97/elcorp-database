@@ -2,7 +2,8 @@ import {
   unstable_parseMultipartFormData,
   UploadHandler,
 } from "@remix-run/node";
-import S3 from "aws-sdk/clients/s3";
+import { Upload } from "@aws-sdk/lib-storage";
+import { S3 } from "@aws-sdk/client-s3";
 import cuid from "cuid";
 
 // Uses the environment variables you stored while setting up your AWS user and S3 bucket to set up the S3 SDK.
@@ -20,13 +21,16 @@ const uploadHandler = async ({ name, filename, stream }) => {
   }
 
   // Uploads the file to S3.
-  const { Location } = await s3
-    .upload({
-      Bucket: process.env.ETSB_BUCKET_NAME || "",
-      Key: `${cuid()}.${filename.split(".").slice(-1)}`,
-      Body: stream,
-    })
-    .promise();
+  const { Location } = await new Upload({
+    client: s3,
+
+    params: {
+        Bucket: process.env.ETSB_BUCKET_NAME || "",
+        Key: `${cuid()}.${filename.split(".").slice(-1)}`,
+        Body: stream,
+      }
+  })
+    .done();
 
   // Returns the Location data S3 returns, which includes the new file's URL location in S3.
   return Location;

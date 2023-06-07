@@ -1,16 +1,16 @@
-// app/utils/proposal.server.js
+// app/utils/proposals.server.js
 
 import { prisma } from "./prisma.server";
 
 export const createProposal = async (proposal) => {
   const newProposal = await prisma.proposal.create({
     data: {
-      name: proposal.name,
+      title: proposal.title,
       desc: proposal.desc,
       proposal: {
         fileName: proposal.fileName,
       },
     },
   });
-  return { id: newProposal.id, name: proposal.name };
+  return { id: newProposal.id, title: proposal.title };
 };

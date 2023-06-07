@@ -14,18 +14,24 @@ export function SidePanel() {
         <Link to="/home">
           <div>Dashboard</div>
         </Link>
-        <div>Certificates/Licenses</div>
+        <Link to="/certificates">
+          <div>Certificates/Licenses</div>
+        </Link>
         <Link to="/proposals">
           <div>Proposals</div>
         </Link>
-        <div>Profiles</div>
-        <div>Media</div>
+        <Link to="/profiles">
+          <div>Profiles</div>
+        </Link>
+        <Link to="/multimedia">
+          <div>Media</div>
+        </Link>
       </div>
       <div className="text-center p-6 bg-gray-300">
         <form action="/logout" method="post">
           <button
             type="submit"
-            className="rounded-xl bg-blue-600 font-semibold text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-blue-400 hover:-translate-y-1"
+            className="rounded-xl bg-sky-600 font-semibold text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-sky-400 hover:-translate-y-1"
           >
             Sign Out
           </button>

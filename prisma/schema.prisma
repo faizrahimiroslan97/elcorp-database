@@ -26,11 +26,16 @@ type Profile {
 
 model Proposals {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String?   @unique
-  desc      String
-  proposal  ProposalFile
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String?   @unique
+  intro       String
+  summary     String
+  conclusion  String
+  cost        String
+  startDate   String
+  endDate     String
+  proposal    ProposalFile
 }
 
 type ProposalFile {
