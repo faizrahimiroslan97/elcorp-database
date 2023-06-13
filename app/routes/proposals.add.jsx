@@ -19,31 +19,20 @@ export const action = async ({ request }) => {
   const endDate = form.get("endDate");
   let fileName = form.get("fileName");
 
-  if (
-    typeof action !== "string" ||
-    typeof title !== "string" ||
-    typeof intro !== "string" ||
-    typeof summary !== "string" ||
-    typeof conclusion !== "string" ||
-    typeof cost !== "string" ||
-    typeof startDate !== "string" ||
-    typeof endDate !== "string" ||
-  ) {
-    return json({ error: `Invalid Form Data`, form: action }, { status: 400 });
-  }
+  return json({ error: `Invalid Form Data`, form: action }, { status: 400 });
 };
 
 export default function ProposalsAdd() {
-    const actionData = useActionData();
-    const [errors, setErrors] = useState(actionData?.errors || {});
-    const [formError, setFormError] = useState(actionData?.error || "");
+  const actionData = useActionData();
+  const [errors, setErrors] = useState(actionData?.errors || {});
+  const [formError, setFormError] = useState(actionData?.error || "");
 
-    const [formData, setFormData] = useState({
-        email: actionData?.fields?.email || "",
-        password: actionData?.fields?.password || "",
-        firstName: actionData?.fields?.lastName || "",
-        lastName: actionData?.fields?.firstName || "",
-      });
+  const [formData, setFormData] = useState({
+    email: actionData?.fields?.email || "",
+    password: actionData?.fields?.password || "",
+    firstName: actionData?.fields?.lastName || "",
+    lastName: actionData?.fields?.firstName || "",
+  });
 
   return (
     <div className="w-full px-12 py-6 flex flex-col gap-x-4 gap-y-4 h-full">
